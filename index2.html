@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brac Presents 1st-SN Bose National Science Festival-2025 | Biggan Adda</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #03045e;
+            --secondary: #0077b6;
+            --accent: #00b4d8;
+            --light: #90e0ef;
+            --white: #f9f9f9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #03045e, #0077b6, #00b4d8);
+        }
+
+        .particle-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .event-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .sponsor-logo {
+            transition: all 0.3s ease;
+            opacity: 1;
+        }
+
+        .sponsor-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Remove grayscale effect on logos */
+        .sponsor-logo img {
+            filter: none;
+            opacity: 1;
+        }
+        
+        .sponsor-logo:hover img {
+            filter: none;
+            opacity: 1;
+        }
+
+        .atom-animation {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+        }
+
+        .nucleus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .electron-orbit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px dashed rgba(144, 224, 239, 0.4);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        .electron-orbit:nth-child(2) {
+            width: 90%;
+            height: 90%;
+            top: 5%;
+            left: 5%;
+            animation-duration: 7s;
+            animation-direction: reverse;
+        }
+
+        .electron-orbit:nth-child(3) {
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            animation-duration: 5s;
+        }
+
+        .electron {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: var(--light);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--light);
+        }
+
+        .electron:nth-child(1) {
+            top: -6px;
+            left: calc(50% - 6px);
+        }
+
+        .electron:nth-child(2) {
+            top: calc(50% - 6px);
+            right: -6px;
+        }
+
+        .electron:nth-child(3) {
+            bottom: -6px;
+            left: calc(50% - 6px);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glow-button {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .glow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.3);
+        }
+
+        .glow-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(144, 224, 239, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            transform: scale(0.5);
+        }
+
+        .glow-button:hover::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .prize-counter {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #00b4d8;
+            text-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #90e0ef; }
+            100% { transform: scale(1); }
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 100;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #1f2937;
+            margin: 5% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 180, 216, 0.3);
+            animation: modalFadeIn 0.4s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #00b4d8;
+        }
+        
+        .prize-item {
+            position: relative;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        
+        .prize-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .prize-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .prize-item:hover::before {
+            left: 100%;
+        }
+
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+            color: #00b4d8;
+            border-bottom: 2px solid #00b4d8;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Particles Background -->
+    <div id="particles-js" class="particle-container"></div>
+    
+    <!-- Header Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 opacity-90"></div>
+        
+        <div class="container mx-auto px-4 py-16 relative z-10">
+            <nav class="absolute top-0 left-0 w-full flex justify-between items-center p-6">
+                <div class="flex items-center">
+                    <!-- Logo Placeholder -->
+                    <div id="logo-placeholder" class="w-12 h-12 rounded-full bg-white bg-opacity-20 flex items-center justify-center mr-3">
+                        <span class="text-xl font-bold orbitron text-accent">BA</span>
+                    </div>
+                    <h3 class="orbitron text-xl font-bold text-white">BIGGAN ADDA</h3>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#events" class="hover:text-accent transition-colors font-medium">Events</a>
+                    <a href="#about" class="hover:text-accent transition-colors font-medium">About</a>
+                    <a href="#prize-pool" class="hover:text-accent transition-colors font-medium">Prize Pool</a>
+                    <a href="#sponsors" class="hover:text-accent transition-colors font-medium">Sponsors</a>
+                </div>
+                
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <div class="max-w-4xl mx-auto text-center pt-20">
+                <div class="atom-animation mb-8 floating">
+                    <div class="nucleus"></div>
+                    <div class="electron-orbit">
+                        <div class="electron"></div>
+                    </div>
+                    <div class="electron-orbit">
+                        <div class="electron"></div>
+                    </div>
+                    <div class="electron-orbit">
+                        <div class="electron"></div>
+                    </div>
+                </div>
+                
+                <h1 class="orbitron text-4xl md:text-7xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-300">
+                    <span class="text-2xl md:text-3xl block mb-2 text-white">BRAC-Biggan Adda Presents</span>
+                    1st-SN Bose National Science Festival
+                </h1>
+                <p class="text-2xl text-light mb-1">2025</p>
+                <div class="w-24 h-1 bg-accent mx-auto my-6"></div>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Join us for an exciting celebration of science and innovation with 20+ institutions and 800+ participants!</p>
+                
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <a href="#register" class="glow-button gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                        REGISTER NOW
+                    </a>
+                    <a href="#events" class="py-3 px-8 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+                        EXPLORE EVENTS
+                    </a>
+                </div>
+                
+                <div class="flex justify-center items-center text-gray-400 space-x-6 mb-10">
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-bold text-accent">20+</span>
+                        <span class="text-sm">Institutions</span>
+                    </div>
+                    <div class="h-10 w-px bg-gray-700"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-bold text-accent">800+</span>
+                        <span class="text-sm">Participants</span>
+                    </div>
+                    <div class="h-10 w-px bg-gray-700"></div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-bold text-accent">8+</span>
+                        <span class="text-sm">Events</span>
+                    </div>
+                </div>
+                
+                <!-- Total Prize Pool Counter -->
+                <div class="mt-8 mb-4">
+                    <p class="text-xl text-gray-300">Total Prize Pool</p>
+                    <h2 class="prize-counter" id="prize-counter">৳0</h2>
+                    <p class="text-lg text-gray-400">in cash and prizes</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-white text-xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="orbitron text-3xl md:text-4xl font-bold mb-12 text-center">About The Festival</h2>
+                
+                <div class="fade-in">
+                    <p class="text-lg mb-6">The Brac Presents 1st-SN Bose National Science Festival-2025 is a celebration of scientific innovation, critical thinking, and collaborative learning. Named after the legendary physicist Satyendra Nath Bose, this festival aims to inspire the next generation of scientists and innovators.</p>
+                    
+                    <p class="text-lg mb-6">Organized by Biggan Adda, Sponsored by Brac, this inaugural event brings together over 20 educational institutions and more than 800 participants in a series of competitive and collaborative events designed to showcase scientific talent and creativity.</p>
+                    
+                    <p class="text-lg">From challenging Olympiads to cutting-edge IT Hackathons, from eloquent Public Speaking to brain-teasing Quizzes, the festival offers a platform for participants to demonstrate their knowledge, skills, and passion for science.</p>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="fade-in bg-gray-900 rounded-xl p-6 shadow-lg">
+                        <div class="text-accent text-5xl mb-4">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">When & Where</h3>
+                        <p>Curzon Hall Premises, May 23-25 (Friday to Sunday)</p>
+                    </div>
+                    
+                    <div class="fade-in bg-gray-900 rounded-xl p-6 shadow-lg">
+                        <div class="text-accent text-5xl mb-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Who Can Participate</h3>
+                        <p>Open to students from all educational institutions. Teams and individual participants are welcome.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-gray-900 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold mb-16 text-center">Exciting Events</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- National Science Olympiad -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('science-olympiad-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-atom text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">National Science Olympiad</h3>
+                        <p class="text-gray-300 mb-4">Test your scientific knowledge across physics, chemistry, biology, mathematics and ICT in this challenging competition.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">All Students</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IT Hackathon -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('it-hackathon-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">IT Hackathon Contest</h3>
+                        <p class="text-gray-300 mb-4">Develop innovative solutions to real-world problems in this intense programming and problem-solving challenge.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">Teams of 3</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Idea Generation Contest -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('idea-gen-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">Idea Generation</h3>
+                        <p class="text-gray-300 mb-4">Showcase your creative innovations and scientific project ideas in this exciting competition.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">Individual or Team</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Science GK Quiz Contest -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('science-quiz-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-question-circle text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">Science GK Quiz</h3>
+                        <p class="text-gray-300 mb-4">Test your knowledge of scientific facts, discoveries, and innovations in this fast-paced quiz competition.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">Teams of 3</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wall Magazine Contest -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('wall-magazine-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-newspaper text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">Wall Magazine Contest</h3>
+                        <p class="text-gray-300 mb-4">Create an informative and visually appealing wall magazine on scientific themes and topics.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">Teams of 3</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Public Speaking Contest -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('public-speaking-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-microphone-alt text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">Public Speaking</h3>
+                        <p class="text-gray-300 mb-4">Showcase your oratory skills and scientific knowledge in this engaging public speaking competition.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">Individual Event</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chess Competition -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('chess-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-chess text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">Chess Competition</h3>
+                        <p class="text-gray-300 mb-4">Demonstrate your strategic thinking and tactical skills in this classical game of intellect.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">Individual Event</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rubik's Cube Contest -->
+                <div class="event-card fade-in bg-gray-800 rounded-xl overflow-hidden shadow-lg" onclick="openModal('rubiks-modal')">
+                    <div class="h-40 gradient-bg flex items-center justify-center">
+                        <i class="fas fa-cube text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">Rubik's Cube Contest</h3>
+                        <p class="text-gray-300 mb-4">Race against time to solve the classic Rubik's Cube puzzle faster than your competitors.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-accent">Individual Event</span>
+                            <i class="fas fa-arrow-right text-accent"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#register" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    JOIN THE EXCITEMENT
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Prize Pool Section -->
+    <section id="prize-pool" class="py-20 bg-gray-800 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold mb-16 text-center">Prize Pool</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <p class="text-center text-lg mb-12">Compete for exciting prizes across all events. The festival features cash prizes, certificates, and special awards for winners and runners-up.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Champion Trophy -->
+                    <div class="prize-item bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl p-6 text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center bg-gradient-to-r from-yellow-500 to-amber-300 rounded-full">
+                            <i class="fas fa-trophy text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Champion</h3>
+                        <p class="text-accent text-2xl font-bold mb-2">৳50,000</p>
+                        <p class="text-gray-400">Trophy + Certificate + Exclusive Prizes</p>
+                    </div>
+                    
+                    <!-- 1st Runner-up -->
+                    <div class="prize-item bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl p-6 text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center bg-gradient-to-r from-gray-300 to-gray-100 rounded-full">
+                            <i class="fas fa-medal text-4xl text-gray-800"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">1st Runner-up</h3>
+                        <p class="text-accent text-2xl font-bold mb-2">৳30,000</p>
+                        <p class="text-gray-400">Trophy + Certificate + Prizes</p>
+                    </div>
+                    
+                    <!-- 2nd Runner-up -->
+                    <div class="prize-item bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl p-6 text-center">
+                        <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center bg-gradient-to-r from-amber-700 to-amber-500 rounded-full">
+                            <i class="fas fa-award text-4xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">2nd Runner-up</h3>
+                        <p class="text-accent text-2xl font-bold mb-2">৳20,000</p>
+                        <p class="text-gray-400">Trophy + Certificate + Prizes</p>
+                    </div>
+                </div>
+                
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold mb-8 text-center">Event-wise Prize Breakdown</h3>
+                    
+                    <div class="bg-gray-900 rounded-xl p-6 mb-8">
+                        <div class="flex flex-wrap border-b border-gray-700 mb-4">
+                            <div class="tab active" data-tab="olympiad">National Science Olympiad</div>
+                            <div class="tab" data-tab="hackathon">IT Hackathon</div>
+                            <div class="tab" data-tab="quiz">Science Quiz</div>
+                            <div class="tab" data-tab="other">Other Events</div>
+                        </div>
+                        
+                        <!-- National Science Olympiad Prize -->
+                        <div id="olympiad-tab" class="tab-content active">
+                            <h4 class="text-xl font-semibold mb-4 text-accent">National Science Olympiad Prizes</h4>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                                <div class="prize-item bg-gray-800 p-4 rounded-lg text-center">
+                                    <h5 class="font-bold mb-2">Secondary Category</h5>
+                                    <p class="text-accent font-bold">1st Prize: ৳15,000</p>
+                                    <p class="text-gray-400">+ Trophy + Certificate</p>
+                                </div>
+                                
+                                <div class="prize-item bg-gray-800 p-4 rounded-lg text-center">
+                                    <h5 class="font-bold mb-2">Higher Secondary</h5>
+                                    <p class="text-accent font-bold">1st Prize: ৳15,000</p>
+                                    <p class="text-gray-400">+ Trophy + Certificate</p>
+                                </div>
+                                
+                                <div class="prize-item bg-gray-800 p-4 rounded-lg text-center">
+                                    <h5 class="font-bold mb-2">Senior Category</h5>
+                                    <p class="text-accent font-bold">1st Prize: ৳15,000</p>
+                                    <p class="text-gray-400">+ Trophy + Certificate</p>
+                                </div>
+                            </div>
+                            
+                            <p class="mb-6">Additional prizes for each category:</p>
+                            <ul class="list-disc pl-6 mb-6 space-y-2">
+                                <li>2nd Prize: ৳10,000 + Medal + Certificate</li>
+                                <li>3rd Prize: ৳5,000 + Medal + Certificate</li>
+                                <li>4th-10th: Certificate of Excellence</li>
+                            </ul>
+                            
+                            <p class="text-sm text-gray-400">* All participants will receive a certificate of participation.</p>
+                        </div>
+                        
+                        <!-- IT Hackathon Prize -->
+                        <div id="hackathon-tab" class="tab-content">
+                            <h4 class="text-xl font-semibold mb-4 text-accent">IT Hackathon Contest Prizes</h4>
+                            
+                            <div class="bg-gray-800 p-6 rounded-lg mb-6">
+                                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                                    <div>
+                                        <h5 class="text-xl font-bold mb-2">Champion Team</h5>
+                                        <p class="text-accent text-3xl font-bold">৳30,000</p>
+                                    </div>
+                                    <div class="text-center mt-4 md:mt-0">
+                                        <i class="fas fa-trophy text-5xl text-yellow-500 mb-2"></i>
+                                        <p>Trophy + Certificates + Tech Prizes</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="prize-item p-4 border border-gray-700 rounded-lg">
+                                        <h5 class="font-bold mb-2">1st Runner-up Team</h5>
+                                        <p class="text-accent text-2xl font-bold">৳20,000</p>
+                                        <p class="text-gray-400">+ Certificates + Tech Prizes</p>
+                                    </div>
+                                    
+                                    <div class="prize-item p-4 border border-gray-700 rounded-lg">
+                                        <h5 class="font-bold mb-2">2nd Runner-up Team</h5>
+                                        <p class="text-accent text-2xl font-bold">৳10,000</p>
+                                        <p class="text-gray-400">+ Certificates</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800 p-6 rounded-lg">
+                                <h5 class="font-bold mb-4">Special Recognitions</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <div class="text-center">
+                                        <i class="fas fa-code text-3xl text-accent mb-2"></i>
+                                        <p class="font-semibold">Best Technical Implementation</p>
+                                        <p class="text-accent">৳5,000</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <i class="fas fa-paint-brush text-3xl text-accent mb-2"></i>
+                                        <p class="font-semibold">Best UI/UX Design</p>
+                                        <p class="text-accent">৳5,000</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <i class="fas fa-rocket text-3xl text-accent mb-2"></i>
+                                        <p class="font-semibold">Most Innovative Solution</p>
+                                        <p class="text-accent">৳5,000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Science Quiz Prize -->
+                        <div id="quiz-tab" class="tab-content">
+                            <h4 class="text-xl font-semibold mb-4 text-accent">Science GK Quiz Contest Prizes</h4>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                                <div class="prize-item bg-gray-800 p-4 rounded-lg text-center">
+                                    <h5 class="font-bold mb-2">Secondary Category</h5>
+                                    <p class="text-accent font-bold">Champion Team: ৳12,000</p>
+                                    <p class="text-gray-400">+ Trophy + Certificates</p>
+                                </div>
+                                
+                                <div class="prize-item bg-gray-800 p-4 rounded-lg text-center">
+                                    <h5 class="font-bold mb-2">Higher Secondary</h5>
+                                    <p class="text-accent font-bold">Champion Team: ৳12,000</p>
+                                    <p class="text-gray-400">+ Trophy + Certificates</p>
+                                </div>
+                                
+                                <div class="prize-item bg-gray-800 p-4 rounded-lg text-center">
+                                    <h5 class="font-bold mb-2">Senior Category</h5>
+                                    <p class="text-accent font-bold">Champion Team: ৳12,000</p>
+                                    <p class="text-gray-400">+ Trophy + Certificates</p>
+                                </div>
+                            </div>
+                            
+                            <p class="mb-6">Additional prizes for each category:</p>
+                            <ul class="list-disc pl-6 mb-6 space-y-2">
+                                <li>1st Runner-up: ৳8,000 + Certificates</li>
+                                <li>2nd Runner-up: ৳5,000 + Certificates</li>
+                                <li>Finalist Teams: Certificate of Excellence</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Other Events Prize -->
+                        <div id="other-tab" class="tab-content">
+                            <h4 class="text-xl font-semibold mb-4 text-accent">Other Event Prizes</h4>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <div class="prize-item bg-gray-800 p-6 rounded-lg">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-microphone-alt text-3xl text-accent mr-4"></i>
+                                        <h5 class="text-lg font-bold">Public Speaking Contest</h5>
+                                    </div>
+                                    <ul class="space-y-2">
+                                        <li><span class="font-semibold">1st Prize:</span> ৳8,000 + Trophy</li>
+                                        <li><span class="font-semibold">2nd Prize:</span> ৳5,000 + Medal</li>
+                                        <li><span class="font-semibold">3rd Prize:</span> ৳3,000 + Medal</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="prize-item bg-gray-800 p-6 rounded-lg">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-newspaper text-3xl text-accent mr-4"></i>
+                                        <h5 class="text-lg font-bold">Wall Magazine Contest</h5>
+                                    </div>
+                                    <ul class="space-y-2">
+                                        <li><span class="font-semibold">Best Magazine:</span> ৳10,000 + Trophy</li>
+                                        <li><span class="font-semibold">1st Runner-up:</span> ৳7,000 + Medal</li>
+                                        <li><span class="font-semibold">2nd Runner-up:</span> ৳5,000 + Medal</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="prize-item bg-gray-800 p-6 rounded-lg">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-chess text-3xl text-accent mr-4"></i>
+                                        <h5 class="text-lg font-bold">Chess Competition</h5>
+                                    </div>
+                                    <ul class="space-y-2">
+                                        <li><span class="font-semibold">Champion:</span> ৳7,000 + Trophy</li>
+                                        <li><span class="font-semibold">1st Runner-up:</span> ৳5,000 + Medal</li>
+                                        <li><span class="font-semibold">2nd Runner-up:</span> ৳3,000 + Medal</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="prize-item bg-gray-800 p-6 rounded-lg">
+                                    <div class="flex items-center mb-4">
+                                        <i class="fas fa-cube text-3xl text-accent mr-4"></i>
+                                        <h5 class="text-lg font-bold">Rubik's Cube Contest</h5>
+                                    </div>
+                                    <ul class="space-y-2">
+                                        <li><span class="font-semibold">Fastest Solver:</span> ৳5,000 + Trophy</li>
+                                        <li><span class="font-semibold">1st Runner-up:</span> ৳3,000 + Medal</li>
+                                        <li><span class="font-semibold">2nd Runner-up:</span> ৳2,000 + Medal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <p class="text-sm text-gray-400">* All participants will receive a certificate of participation. Special recognition certificates will be awarded for outstanding performances.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Register Section -->
+    <section id="register" class="py-20 gradient-bg relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="orbitron text-3xl md:text-4xl font-bold mb-8">Register Now</h2>
+                <p class="text-lg mb-12">Secure your spot at the 1st-SN Bose National Science Festival-2025. Registration is simple and takes only a few minutes.</p>
+                
+                <a href="https://forms.google.com/placeholder" target="_blank" class="glow-button inline-block bg-white text-primary py-4 px-10 rounded-full font-bold text-lg orbitron shadow-lg transition-all hover:scale-105">
+                    REGISTER VIA GOOGLE FORM
+                </a>
+                
+                <p class="mt-6 text-sm opacity-80">Registration deadline will be announced soon.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold mb-16 text-center">Our Sponsors</h2>
+            
+            <!-- Title Sponsor -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold text-center mb-6 text-accent">Title Sponsor</h3>
+                <div class="sponsor-logo title-sponsor fade-in flex flex-col items-center justify-center mx-auto">
+                    <div class="w-72 h-72 flex items-center justify-center mb-4 bg-white p-6 rounded-lg">
+                        <img src="Brac.png" class="w-full h-full object-contain" alt="Brac">
+                    </div>
+                    <h4 class="text-xl font-bold orbitron mt-4">Brac</h4>
+                </div>
+            </div>
+            
+            <!-- Co-Organizers -->
+            <h3 class="text-2xl font-semibold text-center mb-10 text-accent">Co-Organizers</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+                <!-- Co-Organizer 1 -->
+                <div class="sponsor-logo co-organizer fade-in flex flex-col items-center justify-center">
+                    <div class="w-36 h-36 flex items-center justify-center bg-white p-3 rounded-lg">
+                        <img src="WhatsApp Image (1).jpg" class="w-full h-full object-contain" alt="DUSS logo">
+                    </div>
+                    <h5 class="text-sm font-medium mt-4 text-center">Dhaka University Science Society</h5>
+                </div>
+                
+                <!-- Co-Organizer 2 -->
+                <div class="sponsor-logo co-organizer fade-in flex flex-col items-center justify-center">
+                    <div class="w-36 h-36 flex items-center justify-center bg-white p-3 rounded-lg">
+                        <img src="WhatsApp Image.jpg" class="w-full h-full object-contain" alt="DUQS logo">
+                    </div>
+                    <h5 class="text-sm font-medium mt-4 text-center">Dhaka University Quiz Society</h5>
+                </div>
+                
+                <!-- Co-Organizer 3 -->
+                <div class="sponsor-logo co-organizer fade-in flex flex-col items-center justify-center">
+                    <div class="w-36 h-36 flex items-center justify-center bg-white p-3 rounded-lg">
+                        <img src="WhatsApp Image (2).jpg" class="w-full h-full object-contain" alt="DURS logo">
+                    </div>
+                    <h5 class="text-sm font-medium mt-4 text-center">Dhaka University Research Society</h5>
+                </div>
+                
+                <!-- Co-Organizer 4 -->
+                <div class="sponsor-logo co-organizer fade-in flex flex-col items-center justify-center">
+                    <div class="w-36 h-36 flex items-center justify-center bg-white p-3 rounded-lg">
+                        <img src="WhatsApp Image (3).jpg" class="w-full h-full object-contain" alt="DUCC logo">
+                    </div>
+                    <h5 class="text-sm font-medium mt-4 text-center">Dhaka University Chess Club</h5>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-lg text-gray-300">Interested in becoming a sponsor? Contact us at <a href="mailto:bigganadda2019@gmail.com" class="text-accent hover:underline">bigganadda2019@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="orbitron text-xl font-bold">Biggan Adda</h3>
+                    <p class="text-gray-400 mt-1">1st-SN Bose National Science Festival-2025</p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-colors hover:bg-accent">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-colors hover:bg-accent">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-colors hover:bg-accent">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center transition-colors hover:bg-accent">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Biggan Adda. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Event Modals -->
+    <!-- Science Olympiad Modal -->
+    <div id="science-olympiad-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('science-olympiad-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">National Science Olympiad</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <h4 class="font-bold mb-2 text-accent">Secondary</h4>
+                    <p>Class 9-10</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <h4 class="font-bold mb-2 text-accent">Higher Secondary</h4>
+                    <p>Class 11-12</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <h4 class="font-bold mb-2 text-accent">Senior</h4>
+                    <p>Undergraduate</p>
+                </div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Event Details</h4>
+            <ul class="list-disc pl-6 mb-8 space-y-3">
+                <li>Contestants of all categories can participate in this segment individually.</li>
+                <li>The Olympiad will have a 100 marks exam covering Physics, Chemistry, Biology, Mathematics, and ICT.</li>
+                <li>The examination paper will include both multiple choice and creative format questions.</li>
+                <li>Questions will be available in both Bengali and English languages.</li>
+            </ul>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳15,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳10,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">3rd Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳5,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#register" onclick="closeModal('science-olympiad-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    REGISTER NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Idea Generation Modal -->
+    <div id="idea-gen-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('idea-gen-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">Idea Generation Contest</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Event Details</h4>
+            <p class="mb-6">Showcase your innovative ideas and scientific projects in this exciting competition. Participants can enter as individuals or teams to present creative solutions to real-world problems.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2 text-accent">Format</h5>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Submit a detailed project proposal</li>
+                        <li>Create a prototype or demonstration</li>
+                        <li>Present your idea to the judges</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2 text-accent">Judging Criteria</h5>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Innovation and creativity</li>
+                        <li>Scientific merit and feasibility</li>
+                        <li>Potential impact and application</li>
+                        <li>Quality of presentation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳15,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳10,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">3rd Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳5,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#register" onclick="closeModal('idea-gen-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    REGISTER NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Wall Magazine Modal -->
+    <div id="wall-magazine-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('wall-magazine-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">Wall Magazine Contest</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Event Details</h4>
+            <ul class="list-disc pl-6 mb-8 space-y-3">
+                <li>Secondary, Higher Secondary, and Senior category contestants can participate.</li>
+                <li>Participants must form teams of maximum 3 people.</li>
+                <li>The ideal size of a wall magazine is 5 feet by 4 feet, but it can be smaller or larger.</li>
+                <li>The wall magazine should focus on scientific themes and topics.</li>
+                <li>Creativity, information quality, and visual appeal will be key judging criteria.</li>
+            </ul>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">Best Magazine</h5>
+                    <p class="text-2xl text-accent font-bold">৳10,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificates</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳7,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificates</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳5,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificates</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#register" onclick="closeModal('wall-magazine-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    REGISTER NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Public Speaking Modal -->
+    <div id="public-speaking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('public-speaking-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">Public Speaking Contest</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Event Details</h4>
+            <ul class="list-disc pl-6 mb-8 space-y-3">
+                <li>Contestants of Secondary, Higher Secondary, and Senior categories can participate.</li>
+                <li>This is an individual event.</li>
+                <li>Each participant will be given 4 minutes for their speech.</li>
+                <li>Topics will be announced in advance of the festival.</li>
+                <li>Speakers are encouraged to give speeches in Bengali language.</li>
+                <li>Participants will be judged on content, delivery, clarity, and time management.</li>
+            </ul>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳8,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳5,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">3rd Prize</h5>
+                    <p class="text-2xl text-accent font-bold">৳3,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#register" onclick="closeModal('public-speaking-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    REGISTER NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chess Modal -->
+    <div id="chess-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('chess-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">Chess Competition</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Event Details</h4>
+            <p class="mb-6">This is an open category competition where participants can demonstrate their strategic thinking and tactical skills in the classical game of intellect.</p>
+            
+            <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                <h5 class="font-bold mb-3 text-accent">Tournament Format</h5>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Swiss system tournament</li>
+                    <li>Time control: 15 minutes + 5 seconds increment per move</li>
+                    <li>7 rounds (subject to change based on number of participants)</li>
+                    <li>FIDE rules will be followed</li>
+                    <li>Tie breaks will be resolved using standard methods</li>
+                </ul>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">Champion</h5>
+                    <p class="text-2xl text-accent font-bold">৳7,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳5,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳3,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#register" onclick="closeModal('chess-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    REGISTER NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rubik's Cube Modal -->
+    <div id="rubiks-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('rubiks-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">Rubik's Cube Contest</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Event Details</h4>
+            <p class="mb-6">Race against time to solve the classic Rubik's Cube puzzle faster than your competitors in this exciting open category event.</p>
+            
+            <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                <h5 class="font-bold mb-3 text-accent">Competition Format</h5>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Standard 3×3×3 Rubik's Cube competition</li>
+                    <li>Participants will get 5 attempts, with the best and worst times discarded</li>
+                    <li>Final ranking will be based on the average of the remaining 3 times</li>
+                    <li>WCA (World Cube Association) regulations will be followed</li>
+                    <li>Participants must bring their own Rubik's Cube</li>
+                </ul>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">Fastest Solver</h5>
+                    <p class="text-2xl text-accent font-bold">৳5,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳3,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳2,000</p>
+                    <p class="text-sm text-gray-400">+ Medal + Certificate</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#register" onclick="closeModal('rubiks-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    REGISTER NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Particles.js configuration
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ["#00b4d8", "#0077b6", "#90e0ef"]
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#00b4d8",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 0.5
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    },
+                    remove: {
+                        particles_nb: 2
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Fade-in animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+        
+        // Add logo functionality
+        const logoPlaceholder = document.getElementById('logo-placeholder');
+        
+        logoPlaceholder.addEventListener('click', () => {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            
+            fileInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.classList.add('w-full', 'h-full', 'object-contain');
+                        
+                        logoPlaceholder.innerHTML = '';
+                        logoPlaceholder.appendChild(img);
+                        
+                        // Save to localStorage for persistence
+                        localStorage.setItem('bigganAddaLogo', event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            fileInput.click();
+        });
+        
+        // Check if there's a saved logo
+        const savedLogo = localStorage.getItem('bigganAddaLogo');
+        if (savedLogo) {
+            const img = document.createElement('img');
+            img.src = savedLogo;
+            img.classList.add('w-full', 'h-full', 'object-contain');
+            
+            logoPlaceholder.innerHTML = '';
+            logoPlaceholder.appendChild(img);
+        }
+        
+        // Modified sponsor logo functionality to display images naturally
+        const sponsorLogos = document.querySelectorAll('.sponsor-logo');
+        
+        sponsorLogos.forEach(logoContainer => {
+            // Remove any "click to upload" hints that might be automatically added
+            const hints = logoContainer.querySelectorAll('.text-xs.text-gray-400');
+            hints.forEach(hint => hint.remove());
+            
+            // Make sure logos display in natural colors without any filters
+            const logoImg = logoContainer.querySelector('img');
+            if (logoImg) {
+                logoImg.style.filter = 'none';
+                logoImg.classList.add('w-full', 'h-full', 'object-contain');
+            }
+        });
+        
+        // Prize counter animation
+        function animateCounter(element, target, duration) {
+            let start = 0;
+            const startTime = performance.now();
+            
+            function updateCounter(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const currentValue = Math.floor(progress * target);
+                
+                element.textContent = `৳${currentValue.toLocaleString()}`;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = `৳${target.toLocaleString()}`;
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+        
+        // Start the counter animation when the section is in view
+        const prizeCounter = document.getElementById('prize-counter');
+        const targetValue = 500000; // Total prize pool value
+        
+        const prizeCounterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(prizeCounter, targetValue, 2000);
+                    prizeCounterObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        prizeCounterObserver.observe(prizeCounter);
+        
+        // Mobile menu
+        const mobileMenuButton = document.querySelector('button.md\\:hidden');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.classList.add('fixed', 'inset-0', 'bg-gray-900', 'bg-opacity-95', 'z-50', 'flex', 'flex-col', 'items-center', 'justify-center', 'space-y-8', 'transform', 'transition-transform', 'duration-300', 'translate-x-full');
+        
+        // Add nav links
+        const navLinks = ['Events', 'About', 'Prize Pool', 'Sponsors'];
+        navLinks.forEach(link => {
+            const navLink = document.createElement('a');
+            navLink.href = `#${link.toLowerCase().replace(' ', '-')}`;
+            navLink.textContent = link;
+            navLink.classList.add('text-2xl', 'font-medium', 'hover:text-accent', 'transition-colors');
+            
+            mobileMenu.appendChild(navLink);
+        });
+        
+        // Close button
+        const closeButton = document.createElement('button');
+        closeButton.classList.add('absolute', 'top-6', 'right-6', 'text-2xl');
+        closeButton.innerHTML = '<i class="fas fa-times"></i>';
+        mobileMenu.appendChild(closeButton);
+        
+        document.body.appendChild(mobileMenu);
+        
+        // Toggle mobile menu
+        let mobileMenuOpen = false;
+        
+        function toggleMobileMenu() {
+            mobileMenuOpen = !mobileMenuOpen;
+            if (mobileMenuOpen) {
+                mobileMenu.classList.remove('translate-x-full');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+        
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        closeButton.addEventListener('click', toggleMobileMenu);
+        
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMobileMenu();
+            });
+        });
+        
+        // Modal functionality
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'block';
+            document.body.classList.add('overflow-hidden');
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+            document.body.classList.remove('overflow-hidden');
+        }
+        
+        // Close modal when clicking outside the content
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('overflow-hidden');
+                }
+            });
+        });
+        
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab content
+                const tabContents = document.querySelectorAll('.tab-content');
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Show the corresponding tab content
+                const tabId = tab.getAttribute('data-tab');
+                const activeTabContent = document.getElementById(`${tabId}-tab`);
+                if (activeTabContent) {
+                    activeTabContent.classList.add('active');
+                }
+            });
+        });
+        
+        // Fixed registration link setup
+        const registrationButtons = document.querySelectorAll('a[href="https://forms.google.com/placeholder"]');
+        
+        // Check if there's a saved registration link
+        const savedRegistrationLink = localStorage.getItem('registrationFormLink');
+        if (savedRegistrationLink) {
+            registrationButtons.forEach(button => {
+                button.href = savedRegistrationLink;
+            });
+        }
+        
+        // Add event listener to update the registration link
+        registrationButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // If the link is still the placeholder, allow editing
+                if (this.href.includes('placeholder')) {
+                    e.preventDefault();
+                    const newLink = prompt('Enter the Google Form URL for registration:', 'https://forms.gle/qioK8jwYtuhsJ5Df9');
+                    if (newLink && newLink.trim() !== '' && !newLink.includes('placeholder')) {
+                        // Update all registration buttons
+                        registrationButtons.forEach(btn => {
+                            btn.href = newLink.trim();
+                        });
+                        
+                        // Save to localStorage
+                        localStorage.setItem('registrationFormLink', newLink.trim());
+                        
+                        alert('Registration link updated successfully!');
+                        
+                        // Open the form in a new tab
+                        window.open(newLink.trim(), '_blank');
+                    }
+                }
+                // If it's already been set to a real link, just navigate normally
+            });
+        });
+    </script>
+</body>
+</html>    
+    <!-- IT Hackathon Modal -->
+    <div id="it-hackathon-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('it-hackathon-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">IT Hackathon Contest</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                <h4 class="text-lg font-bold mb-4">Format: Online + Onsite Finals</h4>
+                <p class="mb-4">This is a 72-hour online hackathon with onsite finals for the top 10 teams.</p>
+                <ul class="list-disc pl-6 space-y-2 mb-4">
+                    <li>Each team must have 3 members</li>
+                    <li>Problem statements will be released on May 20th</li>
+                    <li>Submissions due by May 23rd</li>
+                    <li>Top 10 teams will present their solutions onsite for final judging</li>
+                </ul>
+                <p>Teams must submit both their code through Google Classroom and record a video presentation of their solution.</p>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Judging Criteria</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2 text-accent">Technical Implementation</h5>
+                    <p>Quality of code, functionality, and technical complexity</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2 text-accent">UI/UX Design</h5>
+                    <p>User interface, experience, and visual design</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2 text-accent">Innovation</h5>
+                    <p>Creativity and uniqueness of the solution</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg">
+                    <h5 class="font-bold mb-2 text-accent">Presentation</h5>
+                    <p>Quality of video and final presentation</p>
+                </div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">Champion Team</h5>
+                    <p class="text-2xl text-accent font-bold">৳30,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificates</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳20,000</p>
+                    <p class="text-sm text-gray-400">+ Certificates</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳10,000</p>
+                    <p class="text-sm text-gray-400">+ Certificates</p>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#register" onclick="closeModal('it-hackathon-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                    REGISTER NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Science Quiz Modal -->
+    <div id="science-quiz-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('science-quiz-modal')">&times;</span>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-4 text-accent">Science GK Quiz Contest</h3>
+                <div class="w-16 h-1 bg-accent mb-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <h4 class="font-bold mb-2 text-accent">Secondary</h4>
+                    <p>Class 9-10</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <h4 class="font-bold mb-2 text-accent">Higher Secondary</h4>
+                    <p>Class 11-12</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-center">
+                    <h4 class="font-bold mb-2 text-accent">Senior</h4>
+                    <p>Undergraduate</p>
+                </div>
+            </div>
+            
+            <h4 class="text-xl font-bold mb-4">Event Details</h4>
+            <ul class="list-disc pl-6 mb-8 space-y-3">
+                <li>Contestants must participate as a team of maximum 3 people.</li>
+                <li>The competition consists of 2 rounds:
+                    <ul class="list-circle pl-6 mt-2 space-y-1">
+                        <li>Round 1: Written test with multiple-choice questions</li>
+                        <li>Round 2: Buzzer round for the top 4 teams from each category</li>
+                    </ul>
+                </li>
+                <li>Questions will cover a wide range of scientific topics, discoveries, and innovations.</li>
+            </ul>
+            
+            <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">Champion Team</h5>
+                    <p class="text-2xl text-accent font-bold">৳12,000</p>
+                    <p class="text-sm text-gray-400">+ Trophy + Certificates</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">1st Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳8,000</p>
+                    <p class="text-sm text-gray-400">+ Certificates</p>
+                </div>
+                <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg text-center">
+                    <h5 class="font-bold mb-2">2nd Runner-up</h5>
+                    <p class="text-2xl text-accent font-bold">৳5,000</p>
+                    <p class="text-sm text-gray-400">+ Certificates</p>
+                </div>
+            </div>
+            
+      <!-- FAQ Section -->
+    <section class="py-20 bg-gray-800 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="orbitron text-3xl md:text-4xl font-bold mb-16 text-center">Frequently Asked Questions</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
+                    <div class="faq-question flex justify-between items-center p-6 cursor-pointer">
+                        <h3 class="text-lg font-semibold">Who can participate in the festival?</h3>
+                        <span class="faq-icon transform transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer hidden p-6 pt-0 bg-gray-900">
+                        <p class="text-gray-300">The festival is open to students from all educational institutions across Bangladesh. Different events have specific category requirements (Secondary, Higher Secondary, and Senior/Undergraduate). Some events like Chess and Rubik's Cube competitions are open to all categories.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
+                    <div class="faq-question flex justify-between items-center p-6 cursor-pointer">
+                        <h3 class="text-lg font-semibold">Is there a registration fee?</h3>
+                        <span class="faq-icon transform transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer hidden p-6 pt-0 bg-gray-900">
+                        <p class="text-gray-300">Yes, there is a nominal registration fee that varies depending on the event. The exact fee structure will be available on the registration form. The fee helps cover administrative costs, certificates, and prizes.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
+                    <div class="faq-question flex justify-between items-center p-6 cursor-pointer">
+                        <h3 class="text-lg font-semibold">How do I prepare for the National Science Olympiad?</h3>
+                        <span class="faq-icon transform transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer hidden p-6 pt-0 bg-gray-900">
+                        <p class="text-gray-300">Preparation involves studying the syllabus content of Physics, Chemistry, Biology, Mathematics, and ICT for your respective category. Focus on fundamental concepts and their applications. Practice with previous years' question papers and standard Olympiad preparation books available in the market.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
+                    <div class="faq-question flex justify-between items-center p-6 cursor-pointer">
+                        <h3 class="text-lg font-semibold">What should I bring to the onsite competitions?</h3>
+                        <span class="faq-icon transform transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer hidden p-6 pt-0 bg-gray-900">
+                        <p class="text-gray-300">Participants should bring their registration confirmation, valid ID card, necessary stationery items, and any specific materials required for their events. For events like the Rubik's Cube contest, participants must bring their own Rubik's Cube. For the IT Hackathon finals, teams should bring their own laptops.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
+                    <div class="faq-question flex justify-between items-center p-6 cursor-pointer">
+                        <h3 class="text-lg font-semibold">Can I participate in multiple events?</h3>
+                        <span class="faq-icon transform transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer hidden p-6 pt-0 bg-gray-900">
+                        <p class="text-gray-300">Yes, participants can register for multiple events as long as the event schedules don't overlap. However, we recommend focusing on events that align with your strengths to maximize your chances of success. Check the detailed schedule on the registration form to plan accordingly.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item bg-gray-900 rounded-lg mb-4 overflow-hidden">
+                    <div class="faq-question flex justify-between items-center p-6 cursor-pointer">
+                        <h3 class="text-lg font-semibold">How can I contact the organizers?</h3>
+                        <span class="faq-icon transform transition-transform duration-300">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </div>
+                    <div class="faq-answer hidden p-6 pt-0 bg-gray-900">
+                        <p class="text-gray-300">You can contact the organizing committee via email at <a href="mailto:bigganadda2019@gmail.com" class="text-accent hover:underline">bigganadda2019@gmail.com</a>. For urgent matters, you can also reach out through our social media channels linked in the footer section.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </body>
+    </html>
