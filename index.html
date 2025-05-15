@@ -469,6 +469,24 @@
             footer .social-links {
                 margin-top: 1.5rem;
             }
+            
+            /* Fix social media icons alignment on mobile */
+            @media (max-width: 768px) {
+                footer .flex {
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                footer .flex > div:first-child {
+                    text-align: center;
+                }
+                
+                footer .flex > div:last-child {
+                    margin-top: 1.5rem;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
         }
 
         /* Add smooth scrolling for mobile */
@@ -823,7 +841,7 @@ ________________________________________________________________
                                     <li>1st Runner-up: ৳5,000</li>
                                     <li>2nd Runner-up: ৳3,000</li>
                                 </ul>
-                                <p class="text-sm text-gray-400 mt-2">+ Certificate</p>
+                                <p class="text-sm text-gray-400 mt-2">+Certificate</p>
                                 <div class="registration-fee">Registration: ৳200</div>
                             </div>
                         </div>
@@ -985,6 +1003,33 @@ ________________________________________________________________
                         <li><i class="fas fa-check-circle text-accent mr-2"></i> Save the Transaction ID and the number used for payment</li>
                         <li><i class="fas fa-check-circle text-accent mr-2"></i> Fill out the online registration form including the Transaction ID</li>
                         <li><i class="fas fa-check-circle text-accent mr-2"></i> Receive your admit card and event schedule after May 18th</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stall Booking Section -->
+    <section id="stall-booking" class="py-20 bg-gray-800 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="orbitron text-3xl md:text-4xl font-bold mb-8">Book a Stall</h2>
+                <p class="text-lg mb-12">Showcase your organization, products, or innovations at the 1st-SN Bose National Science Festival-2025. Booking a stall is easy and offers great visibility.</p>
+                
+                <a href="https://forms.gle/m6aA5QTFEmSDgiAcA" target="_blank" class="glow-button inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white py-4 px-10 rounded-full font-bold text-lg orbitron shadow-lg transition-all hover:scale-105 hover:shadow-purple-500/30">
+                    BOOK A STALL NOW
+                </a>
+                
+                <p class="mt-6 text-sm opacity-80">Stall booking deadline: May 15, 2025 (11:00 p.m.)</p>
+                
+                <div class="mt-12 bg-gray-900 bg-opacity-30 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Stall Booking Procedure</h3>
+                    <ul class="text-left space-y-3">
+                        <li><i class="fas fa-check-circle text-accent mr-2"></i> Select your preferred stall type and location</li>
+                        <li><i class="fas fa-check-circle text-accent mr-2"></i> Pay the stall fee via Mobile Banking (BKash, Nagad, or Rocket)</li>
+                        <li><i class="fas fa-check-circle text-accent mr-2"></i> Use the 'Send Money' option with reference code 'STALL-SNBOSE'</li>
+                        <li><i class="fas fa-check-circle text-accent mr-2"></i> Complete the stall booking form with your payment details</li>
+                        <li><i class="fas fa-check-circle text-accent mr-2"></i> Receive confirmation and setup instructions within 48 hours</li>
                     </ul>
                 </div>
             </div>
@@ -1187,7 +1232,7 @@ ________________________________________________________________
             </div>
             
             <div class="text-center">
-                <a href="#register" onclick="closeModal('science-olympiad-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                <a href="https://forms.gle/msN52ReBaRP1k8zM6" target="_blank" onclick="closeModal('science-olympiad-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                     REGISTER NOW
                 </a>
             </div>
@@ -1265,7 +1310,7 @@ ________________________________________________________________
             </div>
             
             <div class="text-center">
-                <a href="#register" onclick="closeModal('it-hackathon-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                <a href="https://forms.gle/PHBzFy44WWygortA9" target="_blank" onclick="closeModal('it-hackathon-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                     REGISTER NOW
                 </a>
             </div>
@@ -1328,7 +1373,7 @@ ________________________________________________________________
             </div>
             
             <div class="text-center">
-                <a href="#register" onclick="closeModal('innovation-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                <a href="https://forms.gle/FnJnJ5rZJo3oBp1C8" target="_blank" onclick="closeModal('innovation-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                     REGISTER NOW
                 </a>
             </div>
@@ -1369,7 +1414,7 @@ ________________________________________________________________
             </div>
             
             <div class="text-center">
-                <a href="#register" onclick="closeModal('science-quiz-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                <a href="https://forms.gle/LrEKLwvcGwDhNrAJA" target="_blank" onclick="closeModal('science-quiz-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                     REGISTER NOW
                 </a>
             </div>
@@ -1381,7 +1426,7 @@ ________________________________________________________________
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('wall-magazine-modal')">&times;</span>
             <div class="mb-6">
-                <h3 class="text-2xl font-bold mb-4 text-accent">Wall Magazine Contest</h3>
+                <h3 class="text-2xl font-bold mb-4 text-accent">Poster Presentation Contest</h3>
                 <div class="w-16 h-1 bg-accent mb-6"></div>
             </div>
             
@@ -1389,8 +1434,9 @@ ________________________________________________________________
             <ul class="list-disc pl-6 mb-8 space-y-3">
                 <li>All categories contestants can participate.</li>
                 <li>Must participate as a team with a maximum of 3 participants.</li>
-                <li>The ideal size of a wall magazine is 5 feet by 4 feet, but it can be smaller or larger.</li>
+                <li>The ideal size of a Poster is 5 feet by 4 feet, but it can be smaller or larger.</li>
                 <li>Registration Fee: ৳300 per team</li>
+                <li>No Specific topic .You can select at your own.</li>
             </ul>
             
             <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
@@ -1405,7 +1451,7 @@ ________________________________________________________________
             </div>
             
             <div class="text-center">
-                <a href="#register" onclick="closeModal('wall-magazine-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                <a href="https://forms.gle/PNrNRJzjzqywnon98" target="_blank" onclick="closeModal('wall-magazine-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                     REGISTER NOW
                 </a>
             </div>
@@ -1443,7 +1489,7 @@ ________________________________________________________________
             </div>
             
             <div class="text-center">
-                <a href="#register" onclick="closeModal('public-speaking-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+                <a href="https://forms.gle/7uC5k7wUFLuEHGny5" target="_blank" onclick="closeModal('public-speaking-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                     REGISTER NOW
                 </a>
             </div>
@@ -1557,7 +1603,7 @@ ________________________________________________________________
         </div>
         
         <div class="text-center">
-            <a href="#register" onclick="closeModal('chess-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+            <a href="https://forms.gle/chessCompetitionForm" target="_blank" onclick="closeModal('chess-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                 REGISTER NOW
             </a>
         </div>
@@ -1574,11 +1620,31 @@ ________________________________________________________________
         
         <h4 class="text-xl font-bold mb-4">Event Details</h4>
         <ul class="list-disc pl-6 mb-8 space-y-3">
-            <li>Participants must bring a Rubik's Cube.</li>
-            <li>Standard 3×3, Speed solving, Blind folded solving.</li>
-            <li>All ages and backgrounds are welcome.</li>
-            <li>Registration Fee: ৳150</li>
+            <li><strong>Categories:</strong>
+                <ul class="list-circle pl-6 mt-2 space-y-1">
+                    <li>Standard Speed Solving</li>
+                    <li>Blindfolded Solving</li>
+                </ul>
+            </li>
+            <li>Open to all ages and skill levels</li>
+            <li>Participants must bring their own cubes (non-programmable)</li>
+            <li>Registration Fee: ৳150 (includes cash-out charges)</li>
         </ul>
+        
+        <h4 class="text-xl font-bold mb-4">Competition Rules & Format</h4>
+        <div class="bg-gray-800 p-4 rounded-lg mb-8">
+            <ul class="list-disc pl-6 space-y-2">
+                <li>Each participant gets 5 attempts</li>
+                <li>The average of those 5 times will be used for scoring (best and worst will be deducted and the average of the remaining three solves will be counted)</li>
+                <li>For Blindfolded solving, Best of three system will be followed</li>
+                <li>15 seconds of inspection time will be given before each solve</li>
+                <li>2 or more rounds may be held depending on the number of participants</li>
+                <li>WCA-style penalties will apply</li>
+                <li>Cube breaking during solve will result in disqualification</li>
+                <li>Final decisions rest with the event delegates and organizing team</li>
+                <li>WCA rules will be strictly followed</li>
+            </ul>
+        </div>
         
         <h4 class="text-xl font-bold mb-4">Prize Pool</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -1587,30 +1653,51 @@ ________________________________________________________________
                 <ul class="space-y-2">
                     <li class="flex justify-between">
                         <span>Champion:</span>
-                        <span class="text-accent">৳5,000</span>
-                    </li>
-                    <li class="flex justify-between">
-                        <span>1st Runner-up:</span>
                         <span class="text-accent">৳3,000</span>
                     </li>
                     <li class="flex justify-between">
-                        <span>2nd Runner-up:</span>
+                        <span>1st Runner-up:</span>
                         <span class="text-accent">৳2,000</span>
                     </li>
+                    <li class="flex justify-between">
+                        <span>2nd Runner-up:</span>
+                        <span class="text-accent">৳1,500</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>3rd to 5th Runner-up:</span>
+                        <span class="text-accent">৳500 each</span>
+                    </li>
                 </ul>
-                <p class="text-sm text-gray-400 mt-2 text-center">+ Certificate + Souvenir</p>
+                <p class="text-sm text-gray-400 mt-2">* For 3x3 Standard Speed Solving</p>
             </div>
             
             <div class="bg-gradient-to-b from-gray-800 to-gray-900 p-4 rounded-lg">
-                <h5 class="font-bold mb-2 text-center">Additional Prizes</h5>
-                <p class="mb-2">3rd to 5th Runner-up:</p>
-                <p class="text-accent text-center text-xl font-bold">৳1,000 each</p>
-                <p class="text-sm text-gray-400 mt-2 text-center">+ Certificate + Souvenir</p>
+                <h5 class="font-bold mb-2 text-center">Blindfolded Category</h5>
+                <ul class="space-y-2">
+                    <li class="flex justify-between">
+                        <span>Champion:</span>
+                        <span class="text-accent">৳3,000</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>1st Runner-up:</span>
+                        <span class="text-accent">৳2,000</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>2nd Runner-up:</span>
+                        <span class="text-accent">৳1,500</span>
+                    </li>
+                </ul>
+                <p class="text-sm text-gray-400 mt-2">* Prize pool limited due to low participation rate</p>
+            </div>
             </div>
         </div>
         
+        <div class="bg-gray-800 p-4 rounded-lg mb-6 text-center">
+            <p>Souvenirs and certificates will be awarded to all top scorers.</p>
+        </div>
+        
         <div class="text-center">
-            <a href="#register" onclick="closeModal('rubiks-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
+            <a href="https://forms.gle/vx3YT3U3feciq7yV6" target="_blank" onclick="closeModal('rubiks-modal')" class="glow-button inline-block gradient-bg py-3 px-8 rounded-full text-white font-bold orbitron shadow-lg">
                 REGISTER NOW
             </a>
         </div>
