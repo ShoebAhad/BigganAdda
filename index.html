@@ -27,6 +27,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+            max-width: 100vw;
         }
 
         .orbitron {
@@ -361,6 +362,8 @@
             .container {
                 padding-left: 1rem;
                 padding-right: 1rem;
+                max-width: 100%;
+                overflow-x: hidden;
             }
 
             .tab {
@@ -448,6 +451,9 @@
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
                 -ms-overflow-style: none;
+                display: flex;
+                flex-wrap: nowrap;
+                padding-bottom: 5px;
             }
 
             .prize-pool-tabs::-webkit-scrollbar {
@@ -800,7 +806,7 @@ ________________________________________________________________
 
 
                 <div class="bg-gray-900 rounded-xl p-6 mb-8">
-                    <div class="flex flex-wrap border-b border-gray-700 mb-4">
+                    <div class="flex flex-wrap border-b border-gray-700 mb-4 overflow-x-auto prize-pool-tabs">
                         <div class="tab active" data-tab="olympiad">National Science Olympiad</div>
                         <div class="tab" data-tab="hackathon">IT Hackathon</div>
                         <div class="tab" data-tab="quiz">Science Quiz</div>
@@ -1101,7 +1107,7 @@ ________________________________________________________________
             
             <!-- Co-Organizers -->
             <h3 class="text-2xl font-semibold text-center mb-10 text-accent">Co-Organizers</h3>
-            <div class="flex flex-wrap justify-center gap-10 max-w-6xl mx-auto mb-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-10 mb-16 mx-auto max-w-6xl">
                 <!-- Co-Organizer 1 -->
                 <div class="sponsor-logo co-organizer fade-in flex flex-col items-center justify-center">
                     <div class="w-36 h-36 flex items-center justify-center bg-white p-3 rounded-lg">
@@ -1139,7 +1145,7 @@ ________________________________________________________________
             <div class="mb-16">
                 <h3 class="text-2xl font-semibold text-center mb-6 text-accent">Co-Sponsor</h3>
                 <div class="flex justify-center">
-                    <div class="sponsor-logo partner fade-in flex flex-col items-center justify-center">
+                    <div class="sponsor-logo partner fade-in flex flex-col items-center justify-center rounded-xl p-4 w-48">
                         <div class="w-36 h-36 flex items-center justify-center bg-white p-3 rounded-lg">
                             <img src="muspana.jpg" class="w-full h-full object-contain" alt="Muspana">
                         </div>
